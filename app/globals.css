@@ -1,27 +1,120 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #efefef;
+  --foreground: #141414;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: #ef671f;
+  --color-brand: #ef671f;
+  --shadow-brand: 0 0 30px rgba(0, 0, 0, 0.08);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  padding: 1.5rem;
+}
+
+.tq-container {
+  max-width: 1218px;
+}
+
+.tq-container,
+.tq-container-wide {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.tq-container-wide {
+  max-width: 1308px;
+}
+
+@media (min-width: 1024px) {
+  .tq-container,
+  .tq-container-wide {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@keyframes gradient-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.moving-gradient-border {
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    rgba(228, 85, 9, 0.6) 0%,
+    rgba(239, 103, 31, 0.2) 54%,
+    rgba(239, 103, 31, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: gradient-border 3s ease infinite;
+  padding: 2px;
+  border-radius: 9999px;
+}
+
+.moving-gradient-border > * {
+  background: white;
+  border-radius: 9999px;
+}
+
+.moving-gradient-border-gray {
+  position: relative;
+  background: linear-gradient(90deg, #e6e6e6 0%, #ffffff 100%);
+  background-size: 200% 100%;
+  animation: gradient-border 3s ease infinite;
+  padding: 1px;
+  border-radius: 9999px;
+}
+
+.moving-gradient-border-gray > * {
+  background: white;
+  border-radius: 9999px;
+}
+
+@keyframes radial-gradient-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+}
+
+.animated-radial-gradient {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #ff671f 0%, #ffa377 100%);
+  filter: blur(80px);
+  opacity: 0.2;
+  animation: radial-gradient-pulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.animated-radial-gradient-small {
+  width: 240px;
+  height: 240px;
 }
