@@ -46,6 +46,21 @@ body {
   }
 }
 
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes gradient-border-rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
 @keyframes gradient-border {
   0% {
     background-position: 0% 50%;
@@ -60,21 +75,22 @@ body {
 
 .moving-gradient-border {
   position: relative;
-  background: linear-gradient(
-    90deg,
-    rgba(228, 85, 9, 0.6) 0%,
-    rgba(239, 103, 31, 0.2) 54%,
-    rgba(239, 103, 31, 0) 100%
-  );
-  background-size: 200% 100%;
-  animation: gradient-border 3s ease infinite;
   padding: 2px;
   border-radius: 9999px;
+  background: linear-gradient(
+    var(--gradient-angle),
+    rgba(228, 85, 9, 0.6) 0%,
+    rgba(239, 103, 31, 0.2) 54.33%,
+    rgba(239, 103, 31, 0) 100%,
+    rgba(228, 85, 9, 0.6) 100%
+  );
+  animation: gradient-border-rotation 3s linear infinite;
 }
 
 .moving-gradient-border > * {
   background: white;
   border-radius: 9999px;
+  position: relative;
 }
 
 .moving-gradient-border-gray {
@@ -117,4 +133,48 @@ body {
 .animated-radial-gradient-small {
   width: 240px;
   height: 240px;
+}
+
+/* Range Input Styles for Music Player */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-track {
+  background: transparent;
+  height: 4px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #ef671f;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow:
+    0px 0px 6px 0px rgba(147, 133, 235, 0.4) inset,
+    0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  margin-top: -1px;
+}
+
+input[type='range']::-moz-range-track {
+  background: transparent;
+  height: 4px;
+}
+
+input[type='range']::-moz-range-thumb {
+  background: #ef671f;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow:
+    0px 0px 6px 0px rgba(147, 133, 235, 0.4) inset,
+    0px 2px 2px 0px rgba(0, 0, 0, 0.25);
 }

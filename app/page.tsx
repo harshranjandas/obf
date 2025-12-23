@@ -1,6 +1,9 @@
+'use client';
+
 import Image from 'next/image';
 import WhatIsOFBSection from '@/components/WhatIsOFBSection';
 import Button from '@/components/ui/Button';
+import MusicPlayer from '@/components/MusicPlayer';
 
 const tags = [
   {
@@ -20,24 +23,16 @@ const tags = [
 export default function Home() {
   return (
     <>
-      <section className="bg-white shadow-brand w-full p-6">
+      <section className="bg-white shadow-brand p-6 w-full">
         <div
-          className="bg-[#FFF1E7] min-h-[500px] relative"
+          className="bg-[#FFF1E7] min-h-[500px] relative flex items-center p-6 overflow-hidden"
           style={{
             backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 74%), url('/images/bg-pattern.png')`,
           }}
         >
-          <div className="absolute w-[500px] h-[500px] right-0 top-1/2 -translate-y-1/2 pointer-events-none">
-            <Image
-              src="/images/radial-gradient.png"
-              alt="Radial Gradient"
-              width={500}
-              height={500}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="tq-container relative z-10">
-            <div className="flex py-2 items-center">
+          <div className="animated-radial-gradient -right-[80px] top-1/2 -translate-y-1/2" />
+          <div className="tq-container relative z-10 w-full">
+            <div className="flex items-center">
               <div>
                 <div className="moving-gradient-border inline-block">
                   <span className="text-[#888888] text-base font-semibold px-4 py-2 uppercase tracking-widest block">
@@ -63,6 +58,9 @@ export default function Home() {
                 </div>
               </div>
               <div>
+                <div className="absolute top-1/2 -translate-y-1/2 right-[14%] w-[220px] h-[80px]">
+                  <MusicPlayer />
+                </div>
                 <Image
                   src="/images/banner-cover.webp"
                   alt="Banner Cover"
@@ -75,49 +73,56 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="bg-white py-[50px] md:py-[100px] shadow-brand">
-        <div className="tq-container">
-          <div className="flex gap-8">
-            <div className="w-[40%]">
-              <span className="text-[#888888] text-[14px] mb-2 inline-block font-extrabold uppercase tracking-widest">
-                introduction
-              </span>
-              <h2 className="m-0 text-[48px] font-extrabold leading-[56px] text-[#434343] md:text-48px] md:leading-[48px]">
-                India In The
-                <br className="hidden md:block" />
-                21st Century
-              </h2>
-            </div>
-            <div className="w-[60%]">
-              <p className="text-[20px] leading-[36px] text-black">
-                The 21st century is poised to be defined by India&apos;s ascent—
-                a century where the nation doesn&apos;t just rise but soars.
-              </p>
-              <p className="text-[20px] leading-[36px] mt-4 text-black">
-                India stands at the cusp of a transformative era, emerging as a
-                beacon of innovation, collaboration and growth on the global
-                stage.
-              </p>
-              <p className="text-[20px] leading-[36px] mt-4 text-black">
-                A young, forward-looking workforce, fueled by a culture of
-                ingenuity and collaboration, is powering a wave of progress that
-                resonates far beyond its borders.
-              </p>
-              <p className="text-[20px] leading-[36px] mt-4 text-black">
-                One Big Future (OBF) is built to capture this momentum.
-              </p>
+      <div className="relative">
+        {/* Introduction Section - Sticky */}
+        <section className="sticky top-0 h-[calc(100vh-100px)] mb-6 bg-white shadow-brand flex items-center z-20">
+          <div className="tq-container w-full">
+            <div className="flex gap-8">
+              <div className="w-[40%]">
+                <span className="text-[#888888] text-[14px] mb-2 inline-block font-extrabold uppercase tracking-widest">
+                  introduction
+                </span>
+                <h2 className="m-0 text-[48px] font-extrabold leading-[56px] text-[#434343] md:text-48px] md:leading-[48px]">
+                  India In The
+                  <br className="hidden md:block" />
+                  21st Century
+                </h2>
+              </div>
+              <div className="w-[60%]">
+                <p className="text-[20px] leading-[36px] text-black">
+                  The 21st century is poised to be defined by India&apos;s
+                  ascent— a century where the nation doesn&apos;t just rise but
+                  soars.
+                </p>
+                <p className="text-[20px] leading-[36px] mt-4 text-black">
+                  India stands at the cusp of a transformative era, emerging as
+                  a beacon of innovation, collaboration and growth on the global
+                  stage.
+                </p>
+                <p className="text-[20px] leading-[36px] mt-4 text-black">
+                  A young, forward-looking workforce, fueled by a culture of
+                  ingenuity and collaboration, is powering a wave of progress
+                  that resonates far beyond its borders.
+                </p>
+                <p className="text-[20px] leading-[36px] mt-4 text-black">
+                  One Big Future (OBF) is built to capture this momentum.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section className="-mx-6">
-        <Image
-          src="/images/podcast.webp"
-          alt="India In The 21st Century"
-          width={2880}
-          height={1300}
-        />
-      </section>
+        </section>
+
+        {/* Image Section - Stacks on top */}
+        <section className="sticky top-0 z-30">
+          <Image
+            src="/images/podcast.webp"
+            alt="India In The 21st Century"
+            width={2880}
+            height={1300}
+            className="w-full h-auto"
+          />
+        </section>
+      </div>
       <WhatIsOFBSection />
       <section
         className="bg-white py-[50px] md:py-[100px] shadow-brand"
