@@ -24,7 +24,7 @@ const tags = [
 export default function Home() {
   return (
     <>
-      <section className="bg-white shadow-brand p-6 w-full">
+      <section className="bg-white shadow-brand p-4 md:p-6 w-full">
         <div
           className="bg-[#FFF1E7] min-h-[500px] relative flex items-center md:p-6 p-0 overflow-hidden"
           style={{
@@ -221,7 +221,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="bg-white shadow-brand w-full p-6">
+      <section className="bg-white shadow-brand w-full p-4 md:p-6">
         <div className="bg-[#efefef] min-h-[500px] relative overflow-hidden">
           <div className="animated-radial-gradient right-[120px] md:right-[180px] top-[50px] md:top-1/2 -translate-y-1/2" />
           <div className="animated-radial-gradient animated-radial-gradient-small left-[50px] md:left-[50px] bottom-[50px] md:-bottom-1/2 -translate-y-1/2" />

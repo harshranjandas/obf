@@ -26,8 +26,8 @@ export default function RootLayout({
       <head>
         <meta name="apple-mobile-web-app-title" content="OBF" />
       </head>
-      <body className={`${publicSans.variable} antialiased`}>
-        <main className="flex flex-col min-h-screen space-y-6">
+      <body className={`${publicSans.variable} antialiased p-4 md:p-6`}>
+        <main className="flex flex-col min-h-screen space-y-4 md:space-y-6">
           <Header />
           {children}
           <Footer />
