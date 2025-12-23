@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description: 'Partners - One Big Future',
     images: [
       {
-        url: '/images/og-image.png',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'One Big Future Partners',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Partners - One Big Future',
     description: 'Partners - One Big Future',
-    images: ['/images/og-image.png'],
+    images: ['/og-image.jpg'],
   },
 };
 

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     description: 'Advisors - One Big Future',
     images: [
       {
-        url: '/images/og-image.png',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'One Big Future Advisors',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Advisors - One Big Future',
     description: 'Advisors - One Big Future',
-    images: ['/images/og-image.png'],
+    images: ['/og-image.jpg'],
   },
 };
 

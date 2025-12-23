@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: 'Contact us to share your ideas.',
       images: [
         {
-          url: '/images/og-image.png',
+          url: '/og-image.jpg',
           width: 1200,
           height: 630,
           alt: 'Contact Us - One Big Future',
@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       title: 'Contact Us - One Big Future',
       description: 'Contact us to share your ideas.',
-      images: ['/images/og-image.png'],
+      images: ['/og-image.jpg'],
     },
   };
 }
