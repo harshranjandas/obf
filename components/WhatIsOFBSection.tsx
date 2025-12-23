@@ -79,15 +79,16 @@ const WhatIsOFBSection = () => {
           <span className="text-[#888888] text-[14px] mb-2 font-extrabold uppercase tracking-widest">
             What is one big future?
           </span>
-          <h2 className="text-[24px] md:text-[32px] font-normal leading-[32px] md:leading-[40px] text-[#434343] mb-[56px] mt-2">
+          <h2 className="text-[24px] md:text-[32px] font-normal leading-[32px] md:leading-[40px] text-[#434343] mb-[56px] mt-2 min-h-[290px] md:min-h-[160px]">
             One Big Future brings together influential voices from{' '}
             <br className="hidden md:block" />
             <span className="font-medium text-brand">
               {displayText}
               <span className="animate-pulse">|</span>
-            </span>
-            providing a platform for leaders to share their vision for India’s
-            future and the pathways to turn these possibilities into reality.
+            </span>{' '}
+            providing a platform for leaders <br />
+            to share their vision for India&apos;s future and the pathways to
+            turn these possibilities into reality.
           </h2>
         </div>
       </div>
