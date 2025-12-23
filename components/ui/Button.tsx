@@ -5,7 +5,7 @@ const Button: React.FC<
   React.ButtonHTMLAttributes<HTMLButtonElement> & {
     variant?: 'primary' | 'secondary';
   }
-> = ({ children, onClick, variant = 'primary', ...props }) => {
+> = ({ children, onClick, variant = 'primary', type = 'button', ...props }) => {
   const baseClasses =
     'flex items-center gap-2 bg-brand text-white font-semibold uppercase tracking-wide py-[4px] pr-[4px] pl-6';
   const variantClasses =
@@ -20,8 +20,8 @@ const Button: React.FC<
     <button
       className={clsx(baseClasses, variantClasses)}
       onClick={onClick}
+      type={type}
       {...props}
-      type="button"
     >
       {children}{' '}
       <span
