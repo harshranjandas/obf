@@ -32,7 +32,7 @@ export const Footer: React.FC = () => {
               tomorrow and the pathways to turn these possibilities into
               reality.
             </p>
-            <p className="mb-[40px] text-[15px] font-normal uppercase leading-[28px] tracking-[2px] text-black flex items-center">
+            <p className="mb-[40px] text-[15px] font-normal uppercase leading-[28px] tracking-[2px] text-black items-center hidden md:flex">
               A{' '}
               <Image
                 src="/images/t9l.png"

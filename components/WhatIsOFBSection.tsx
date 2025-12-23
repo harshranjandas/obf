@@ -79,8 +79,9 @@ const WhatIsOFBSection = () => {
           <span className="text-[#888888] text-[14px] mb-2 font-extrabold uppercase tracking-widest">
             What is one big future?
           </span>
-          <h2 className="text-[32px] font-normal leading-[40px] text-[#434343] md:text-[32px] md:leading-[40px] mb-[56px] mt-2">
-            One Big Future brings together influential voices from <br />
+          <h2 className="text-[24px] md:text-[32px] font-normal leading-[32px] md:leading-[40px] text-[#434343] mb-[56px] mt-2">
+            One Big Future brings together influential voices from{' '}
+            <br className="hidden md:block" />
             <span className="font-medium text-brand">
               {displayText}
               <span className="animate-pulse">|</span>

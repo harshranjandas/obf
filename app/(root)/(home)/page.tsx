@@ -4,6 +4,7 @@ import Image from 'next/image';
 import WhatIsOFBSection from '@/components/WhatIsOFBSection';
 import Button from '@/components/ui/Button';
 import MusicPlayer from '@/components/MusicPlayer';
+import Link from 'next/link';
 
 const tags = [
   {
@@ -25,40 +26,40 @@ export default function Home() {
     <>
       <section className="bg-white shadow-brand p-6 w-full">
         <div
-          className="bg-[#FFF1E7] min-h-[500px] relative flex items-center p-6 overflow-hidden"
+          className="bg-[#FFF1E7] min-h-[500px] relative flex items-center md:p-6 p-0 overflow-hidden"
           style={{
             backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 74%), url('/images/bg-pattern.png')`,
           }}
         >
           <div className="animated-radial-gradient -right-[80px] top-1/2 -translate-y-1/2" />
           <div className="tq-container relative z-10 w-full">
-            <div className="flex items-center">
-              <div>
+            <div className="flex w-full md:w-auto flex-col md:flex-row items-center">
+              <div className="mb-[40px] md:mb-0 text-center md:text-left pt-[50px] md:pt-0">
                 <div className="moving-gradient-border inline-block">
-                  <span className="text-[#888888] text-base font-semibold px-4 py-2 uppercase tracking-widest block">
+                  <span className="text-[#888888] text-[12px] md:text-base font-semibold px-4 py-2 uppercase tracking-widest block">
                     ONE BIG FUTURE
                   </span>
                 </div>
-                <h1 className="text-[60px] font-medium text-[#888888] leading-[70px] pt-[28px] pb-[40px]">
+                <h1 className="text-[40px] md:text-[60px] font-medium text-[#888888] leading-[50px] md:leading-[70px] pt-[28px] pb-[40px]">
                   India’s <span className="text-brand font-bold">future</span>{' '}
                   as imagined by our{' '}
                   <span className="text-brand font-bold">leaders</span>
                 </h1>
-                <div className="flex gap-2">
+                <div className="flex items-center justify-center md:justify-start gap-2">
                   {tags.map((tag) => (
                     <span
                       key={tag.value}
                       className="moving-gradient-border-gray inline-block"
                     >
-                      <span className="px-4 py-2 text-[10px] text-[#3d3d3d] font-semibold uppercase tracking-widest block">
+                      <span className="md:px-4 px-2 md:py-2 py-1 text-[10px] text-[#3d3d3d] font-semibold uppercase tracking-widest block">
                         {tag.label}
                       </span>
                     </span>
                   ))}
                 </div>
               </div>
-              <div>
-                <div className="absolute top-1/2 -translate-y-1/2 right-[14%] w-[220px] h-[80px]">
+              <div className="relative">
+                <div className="absolute md:top-1/2 md:-translate-y-1/2 md:right-[14%] w-[220px] h-[80px] bottom-[90px] md:bottom-auto left-0 md:left-auto right-0 mx-auto">
                   <MusicPlayer />
                 </div>
                 <Image
@@ -74,37 +75,36 @@ export default function Home() {
         </div>
       </section>
       <div className="relative">
-        {/* Introduction Section - Sticky */}
-        <section className="sticky top-0 h-[calc(100vh-100px)] mb-6 bg-white shadow-brand flex items-center z-20">
+        <section className="md:sticky md:top-0 md:h-[calc(100vh-100px)] mb-6 bg-white shadow-brand flex items-center z-20">
           <div className="tq-container w-full">
-            <div className="flex gap-8">
-              <div className="w-[40%]">
+            <div className="flex flex-col md:flex-row gap-8 py-[50px] md:py-0">
+              <div className="w-full md:w-[40%]">
                 <span className="text-[#888888] text-[14px] mb-2 inline-block font-extrabold uppercase tracking-widest">
                   introduction
                 </span>
-                <h2 className="m-0 text-[48px] font-extrabold leading-[56px] text-[#434343] md:text-48px] md:leading-[48px]">
+                <h2 className="m-0 text-[40px] md:text-[48px] font-extrabold leading-[46px] md:leading-[54px] text-[#434343]">
                   India In The
                   <br className="hidden md:block" />
                   21st Century
                 </h2>
               </div>
-              <div className="w-[60%]">
-                <p className="text-[20px] leading-[36px] text-black">
+              <div className="w-full md:w-[60%]">
+                <p className="text-[16px] md:text-[20px] leading-[24px] md:leading-[36px] text-black">
                   The 21st century is poised to be defined by India&apos;s
                   ascent— a century where the nation doesn&apos;t just rise but
                   soars.
                 </p>
-                <p className="text-[20px] leading-[36px] mt-4 text-black">
+                <p className="text-[16px] md:text-[20px] leading-[24px] md:leading-[36px] mt-4 text-black">
                   India stands at the cusp of a transformative era, emerging as
                   a beacon of innovation, collaboration and growth on the global
                   stage.
                 </p>
-                <p className="text-[20px] leading-[36px] mt-4 text-black">
+                <p className="text-[16px] md:text-[20px] leading-[24px] md:leading-[36px] mt-4 text-black">
                   A young, forward-looking workforce, fueled by a culture of
                   ingenuity and collaboration, is powering a wave of progress
                   that resonates far beyond its borders.
                 </p>
-                <p className="text-[20px] leading-[36px] mt-4 text-black">
+                <p className="text-[16px] md:text-[20px] leading-[24px] md:leading-[36px] mt-4 text-black">
                   One Big Future (OBF) is built to capture this momentum.
                 </p>
               </div>
@@ -139,9 +139,9 @@ export default function Home() {
               Coming Soon
             </h2>
           </div>
-          <div className="flex gap-12">
+          <div className="flex flex-col md:flex-row gap-12">
             <div
-              className="p-10 w-1/3 relative"
+              className="p-10 w-full md:w-1/3 relative"
               style={{
                 backgroundColor: '#FFF1E7',
                 backgroundImage: `url('/images/interview-gradient.png')`,
@@ -167,7 +167,7 @@ export default function Home() {
               </p>
             </div>
             <div
-              className="p-10 w-1/3 relative"
+              className="p-10 w-full md:w-1/3 relative"
               style={{
                 backgroundColor: '#F2F2F2',
                 backgroundImage: `url('/images/podcast-gradient.png')`,
@@ -193,7 +193,7 @@ export default function Home() {
               </p>
             </div>
             <div
-              className="p-10 w-1/3 relative"
+              className="p-10 w-full md:w-1/3 relative"
               style={{
                 backgroundColor: '#D4EBE0',
                 backgroundImage: `url('/images/event-gradient.png')`,
@@ -223,28 +223,37 @@ export default function Home() {
       </section>
       <section className="bg-white shadow-brand w-full p-6">
         <div className="bg-[#efefef] min-h-[500px] relative overflow-hidden">
-          <div className="animated-radial-gradient right-[180px] top-1/2 -translate-y-1/2" />
-          <div className="animated-radial-gradient animated-radial-gradient-small left-[50px] -bottom-1/2 -translate-y-1/2" />
+          <div className="animated-radial-gradient right-[120px] md:right-[180px] top-[50px] md:top-1/2 -translate-y-1/2" />
+          <div className="animated-radial-gradient animated-radial-gradient-small left-[50px] md:left-[50px] bottom-[50px] md:-bottom-1/2 -translate-y-1/2" />
           <div className="tq-container md:py-[100px] py-[50px] relative z-10">
             <span className="text-[#888888] text-[14px] mb-2 font-extrabold uppercase tracking-widest">
               SHARE YOUR VISION
             </span>
-            <h2 className="text-[32px] font-bold leading-[40px] text-[#434343] md:text-[48px] md:leading-[48px] mb-[30px] mt-2">
+            <h2 className="text-[44px] font-bold leading-[50px] text-[#434343] md:text-[48px] md:leading-[48px] mb-[30px] mt-2">
               What Is Your Dream For India&apos;s Future?
             </h2>
-            <p className="text-[20px] leading-[36px] text-[#141414] mb-[80px]">
+            <p className="text-[16px] md:text-[20px] leading-[24px] md:leading-[36px] text-[#141414] md:mb-[80px] mb-[30px]">
               We invite you to explore the ideas, ambitions, and forces driving
               India toward its next horizon. <br />
               Contact us to share your ideas.
             </p>
-            <Button>Contact us</Button>
+            <Link href="/contact-us">
+              <Button className="w-full md:w-auto">Contact us</Button>
+            </Link>
           </div>
           <Image
             src="/images/city-infographic.webp"
             alt="Share Your Vision"
             width={2755}
             height={728}
-            className="absolute bottom-0 right-0 w-auto h-auto max-h-[230px] z-10"
+            className="absolute bottom-0 right-0 w-auto h-auto max-h-[230px] z-10 hidden md:block"
+          />
+          <Image
+            src="/images/city-infographic-small.png"
+            alt="Share Your Vision"
+            width={1029}
+            height={267}
+            className="max-h-[95px] z-10 block md:hidden"
           />
         </div>
       </section>

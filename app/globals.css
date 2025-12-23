@@ -121,18 +121,28 @@ body {
 
 .animated-radial-gradient {
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 200px;
+  height: 200px;
   background: radial-gradient(circle, #ff671f 0%, #ffa377 100%);
   filter: blur(80px);
   opacity: 0.2;
   animation: radial-gradient-pulse 4s ease-in-out infinite;
   pointer-events: none;
+
+  @media (min-width: 768px) {
+    width: 500px;
+    height: 500px;
+  }
 }
 
 .animated-radial-gradient-small {
-  width: 240px;
-  height: 240px;
+  width: 120px;
+  height: 120px;
+
+  @media (min-width: 768px) {
+    width: 240px;
+    height: 240px;
+  }
 }
 
 /* Range Input Styles for Music Player */
