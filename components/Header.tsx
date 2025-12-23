@@ -13,15 +13,15 @@ import Button from './ui/Button';
 const menuLinks = [
   {
     label: 'Advisors',
-    href: '/advisor',
+    href: '/advisors',
   },
   {
     label: 'Partners',
     href: '/partners',
   },
   {
-    label: 'Team',
-    href: '/team',
+    label: 'Contact Us',
+    href: '/contact-us',
   },
 ];
 

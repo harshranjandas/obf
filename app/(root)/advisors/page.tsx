@@ -74,12 +74,10 @@ const advisors = [
 export default async function AdvisorsPage() {
   return (
     <section className="bg-white px-[16px] py-[50px] md:px-6 md:py-[100px]">
-      <div className="tq-container w-full pb-[35px]">
-        <div className="relative mx-auto flex flex-col items-center gap-0 text-left md:w-[470px] md:text-center">
-          <h1 className="relative w-full text-[38px] font-extrabold leading-[1.2] tracking-tight sm:max-w-[533px] md:text-center md:text-[50px]">
-            Advisors
-          </h1>
-        </div>
+      <div className="tq-container w-full">
+        <h1 className="text-[38px] font-extrabold leading-[1.2] mb-[70px] text-center tracking-tight md:text-[50px]">
+          Advisors
+        </h1>
       </div>
       <div className="tq-container w-full">
         <div className="grid grid-cols-1 gap-[30px] md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

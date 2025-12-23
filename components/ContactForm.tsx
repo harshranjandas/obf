@@ -232,7 +232,7 @@ export default function ContactForm() {
               {submitError}
             </div>
           )}
-          <div className="text-right">
+          <div className="flex items-center justify-end">
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? 'SUBMITTING...' : 'SUBMIT'}
             </Button>
