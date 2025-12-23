@@ -13,7 +13,7 @@ const ADMIN_EMAIL = 'hello@t9l.com';
 const DEFAULT_RECIPIENTS = ['arun@t9l.com'];
 
 const RECIPIENT_EMAILS =
-  process.env.SUBMIT_PORTFOLIO_RECIPIENTS?.split(',')
+  process.env.CONTACT_US_RECIPIENTS?.split(',')
     .map((email) => email.trim())
     .filter(Boolean) ?? DEFAULT_RECIPIENTS;
 
@@ -171,7 +171,7 @@ ${message}
 This message was submitted through the One Big Future contact form.`;
 
     const command = new SendEmailCommand({
-      Source: `"T9L Venture" <${ADMIN_EMAIL}>`,
+      Source: `"One Big Future" <${ADMIN_EMAIL}>`,
       Destination: {
         ToAddresses: recipients,
       },

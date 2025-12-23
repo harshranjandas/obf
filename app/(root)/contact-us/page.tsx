@@ -103,12 +103,7 @@ export default async function ContactUsPage() {
 
           <div className="w-full lg:w-[42%]">
             <div className="sticky top-[140px] mt-8 space-y-6">
-              <div className="bg-[#F3F1F0] p-6 md:p-12">
-                <h3 className="mb-[30px] text-[20px] font-medium uppercase leading-[28px] text-black">
-                  Reach Out to Us
-                </h3>
-                <ContactForm />
-              </div>
+              <ContactForm />
             </div>
           </div>
         </div>

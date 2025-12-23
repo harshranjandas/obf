@@ -111,133 +111,153 @@ export default function ContactForm() {
   return (
     <div className="w-full">
       <div className="space-y-6">
-        <form onSubmit={handleSubmit} className="space-y-[20px]">
-          <div>
-            <input
-              name="firstName"
-              className={`w-full border bg-white px-4 py-3 text-base text-black placeholder:text-[#999999] focus:outline-none focus:ring-1 focus:ring-black ${
-                fieldErrors.firstName ? 'border-red-500' : 'border-[#DAD8D6]'
-              }`}
-              placeholder="First Name"
-              disabled={isSubmitting}
-              onChange={() => {
-                if (fieldErrors.firstName) {
-                  setFieldErrors((prev) => ({ ...prev, firstName: false }));
-                }
-              }}
-            />
-          </div>
-          <div>
-            <input
-              name="lastName"
-              className={`w-full border bg-white px-4 py-3 text-base text-black placeholder:text-[#999999] focus:outline-none focus:ring-1 focus:ring-black ${
-                fieldErrors.lastName ? 'border-red-500' : 'border-[#DAD8D6]'
-              }`}
-              placeholder="Last Name"
-              disabled={isSubmitting}
-              onChange={() => {
-                if (fieldErrors.lastName) {
-                  setFieldErrors((prev) => ({ ...prev, lastName: false }));
-                }
-              }}
-            />
-          </div>
-          <div>
-            <input
-              name="email"
-              className={`w-full border bg-white px-4 py-3 text-base text-black placeholder:text-[#999999] focus:outline-none focus:ring-1 focus:ring-black ${
-                fieldErrors.email ? 'border-red-500' : 'border-[#DAD8D6]'
-              }`}
-              placeholder="Email Address"
-              type="email"
-              disabled={isSubmitting}
-              onChange={() => {
-                if (fieldErrors.email) {
-                  setFieldErrors((prev) => ({ ...prev, email: false }));
-                }
-              }}
-            />
-          </div>
-          <div>
-            <input
-              name="phoneNumber"
-              className={`w-full border bg-white px-4 py-3 text-base text-black placeholder:text-[#999999] focus:outline-none focus:ring-1 focus:ring-black ${
-                fieldErrors.phoneNumber ? 'border-red-500' : 'border-[#DAD8D6]'
-              }`}
-              placeholder="Phone Number"
-              type="tel"
-              disabled={isSubmitting}
-              onChange={() => {
-                if (fieldErrors.phoneNumber) {
-                  setFieldErrors((prev) => ({
-                    ...prev,
-                    phoneNumber: false,
-                  }));
-                }
-              }}
-            />
-          </div>
-          <div>
-            <input
-              name="organization"
-              className={`w-full border bg-white px-4 py-3 text-base text-black placeholder:text-[#999999] focus:outline-none focus:ring-1 focus:ring-black ${
-                fieldErrors.organization ? 'border-red-500' : 'border-[#DAD8D6]'
-              }`}
-              placeholder="Organization/Affiliation"
-              disabled={isSubmitting}
-              onChange={() => {
-                if (fieldErrors.organization) {
-                  setFieldErrors((prev) => ({
-                    ...prev,
-                    organization: false,
-                  }));
-                }
-              }}
-            />
-          </div>
-          <div>
-            <input
-              name="role"
-              className={`w-full border bg-white px-4 py-3 text-base text-black placeholder:text-[#999999] focus:outline-none focus:ring-1 focus:ring-black ${
-                fieldErrors.role ? 'border-red-500' : 'border-[#DAD8D6]'
-              }`}
-              placeholder="Role/Title"
-              disabled={isSubmitting}
-              onChange={() => {
-                if (fieldErrors.role) {
-                  setFieldErrors((prev) => ({ ...prev, role: false }));
-                }
-              }}
-            />
-          </div>
-          <div>
-            <textarea
-              name="message"
-              rows={5}
-              className={`w-full border bg-white px-4 py-3 text-base text-black placeholder:text-[#999999] focus:outline-none focus:ring-1 focus:ring-black resize-none ${
-                fieldErrors.message ? 'border-red-500' : 'border-[#DAD8D6]'
-              }`}
-              placeholder="Your message to us..."
-              disabled={isSubmitting}
-              onChange={() => {
-                if (fieldErrors.message) {
-                  setFieldErrors((prev) => ({ ...prev, message: false }));
-                }
-              }}
-            />
-          </div>
+        {!isSubmitted && (
+          <div className="bg-[#F3F1F0] p-6 md:p-12">
+            <h3 className="mb-[30px] text-[20px] font-medium uppercase leading-[28px] text-black">
+              Reach Out to Us
+            </h3>
+            <form onSubmit={handleSubmit} className="space-y-[20px]">
+              <div>
+                <input
+                  name="firstName"
+                  className={`w-full border bg-white px-4 py-3 text-base text-black placeholder:text-[#999999] focus:outline-none focus:ring-1 focus:ring-black ${
+                    fieldErrors.firstName
+                      ? 'border-red-500'
+                      : 'border-[#DAD8D6]'
+                  }`}
+                  placeholder="First Name"
+                  disabled={isSubmitting}
+                  onChange={() => {
+                    if (fieldErrors.firstName) {
+                      setFieldErrors((prev) => ({
+                        ...prev,
+                        firstName: false,
+                      }));
+                    }
+                  }}
+                />
+              </div>
+              <div>
+                <input
+                  name="lastName"
+                  className={`w-full border bg-white px-4 py-3 text-base text-black placeholder:text-[#999999] focus:outline-none focus:ring-1 focus:ring-black ${
+                    fieldErrors.lastName ? 'border-red-500' : 'border-[#DAD8D6]'
+                  }`}
+                  placeholder="Last Name"
+                  disabled={isSubmitting}
+                  onChange={() => {
+                    if (fieldErrors.lastName) {
+                      setFieldErrors((prev) => ({
+                        ...prev,
+                        lastName: false,
+                      }));
+                    }
+                  }}
+                />
+              </div>
+              <div>
+                <input
+                  name="email"
+                  className={`w-full border bg-white px-4 py-3 text-base text-black placeholder:text-[#999999] focus:outline-none focus:ring-1 focus:ring-black ${
+                    fieldErrors.email ? 'border-red-500' : 'border-[#DAD8D6]'
+                  }`}
+                  placeholder="Email Address"
+                  type="email"
+                  disabled={isSubmitting}
+                  onChange={() => {
+                    if (fieldErrors.email) {
+                      setFieldErrors((prev) => ({ ...prev, email: false }));
+                    }
+                  }}
+                />
+              </div>
+              <div>
+                <input
+                  name="phoneNumber"
+                  className={`w-full border bg-white px-4 py-3 text-base text-black placeholder:text-[#999999] focus:outline-none focus:ring-1 focus:ring-black ${
+                    fieldErrors.phoneNumber
+                      ? 'border-red-500'
+                      : 'border-[#DAD8D6]'
+                  }`}
+                  placeholder="Phone Number"
+                  type="tel"
+                  disabled={isSubmitting}
+                  onChange={() => {
+                    if (fieldErrors.phoneNumber) {
+                      setFieldErrors((prev) => ({
+                        ...prev,
+                        phoneNumber: false,
+                      }));
+                    }
+                  }}
+                />
+              </div>
+              <div>
+                <input
+                  name="organization"
+                  className={`w-full border bg-white px-4 py-3 text-base text-black placeholder:text-[#999999] focus:outline-none focus:ring-1 focus:ring-black ${
+                    fieldErrors.organization
+                      ? 'border-red-500'
+                      : 'border-[#DAD8D6]'
+                  }`}
+                  placeholder="Organization/Affiliation"
+                  disabled={isSubmitting}
+                  onChange={() => {
+                    if (fieldErrors.organization) {
+                      setFieldErrors((prev) => ({
+                        ...prev,
+                        organization: false,
+                      }));
+                    }
+                  }}
+                />
+              </div>
+              <div>
+                <input
+                  name="role"
+                  className={`w-full border bg-white px-4 py-3 text-base text-black placeholder:text-[#999999] focus:outline-none focus:ring-1 focus:ring-black ${
+                    fieldErrors.role ? 'border-red-500' : 'border-[#DAD8D6]'
+                  }`}
+                  placeholder="Role/Title"
+                  disabled={isSubmitting}
+                  onChange={() => {
+                    if (fieldErrors.role) {
+                      setFieldErrors((prev) => ({ ...prev, role: false }));
+                    }
+                  }}
+                />
+              </div>
+              <div>
+                <textarea
+                  name="message"
+                  rows={5}
+                  className={`w-full border bg-white px-4 py-3 text-base text-black placeholder:text-[#999999] focus:outline-none focus:ring-1 focus:ring-black resize-none ${
+                    fieldErrors.message ? 'border-red-500' : 'border-[#DAD8D6]'
+                  }`}
+                  placeholder="Your message to us..."
+                  disabled={isSubmitting}
+                  onChange={() => {
+                    if (fieldErrors.message) {
+                      setFieldErrors((prev) => ({ ...prev, message: false }));
+                    }
+                  }}
+                />
+              </div>
 
-          {submitError && (
-            <div className="rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-              {submitError}
-            </div>
-          )}
-          <div className="flex items-center justify-end">
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'SUBMITTING...' : 'SUBMIT'}
-            </Button>
+              {submitError && (
+                <div className="rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                  {submitError}
+                </div>
+              )}
+              <div className="flex items-center justify-end">
+                <Button type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? 'SUBMITTING...' : 'SUBMIT'}
+                </Button>
+              </div>
+            </form>
           </div>
-        </form>
+        )}
+
         {isSubmitted && (
           <div className="rounded-lg bg-[#FFFBF0] px-5 py-12 text-center">
             <div className="mb-4 flex justify-center">
