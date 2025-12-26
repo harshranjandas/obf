@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import LinkedinIcon from './icons/LinkedinIcon';
@@ -13,12 +16,23 @@ export default function TeamMemberCard({
     linkedIn: string;
   };
 }) {
+  const [isActive, setIsActive] = useState(false);
+
+  const handleClick = () => {
+    setIsActive(!isActive);
+  };
+
   return (
     <>
-      <div className="group relative flex flex-col overflow-hidden border border-gray-200 text-center outline-none transition-shadow duration-300 hover:shadow-lg cursor-pointer">
+      <div
+        className={`group relative flex flex-col overflow-hidden border border-gray-200 text-center outline-none transition-shadow duration-300 md:hover:shadow-lg cursor-pointer ${isActive ? 'shadow-lg md:shadow-none' : ''}`}
+        onClick={handleClick}
+      >
         <div className="relative flex-1 overflow-hidden">
           <div className="relative aspect-[3/4] min-h-[268px] w-full overflow-hidden sm:min-h-[362px]">
-            <div className="absolute inset-0 origin-center scale-100 transform-gpu transition-transform duration-1000 ease-out will-change-transform group-hover:scale-110">
+            <div
+              className={`absolute inset-0 origin-center scale-100 transform-gpu transition-transform duration-1000 ease-out will-change-transform md:group-hover:scale-110 ${isActive ? 'scale-110 md:scale-100' : ''}`}
+            >
               <Image
                 src={member.image}
                 alt={member.name}
@@ -35,7 +49,7 @@ export default function TeamMemberCard({
             <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/50 to-transparent"></div>
 
             <div
-              className="absolute inset-x-0 bottom-0 bg-white opacity-100 transition-opacity duration-500 ease-in-out group-hover:opacity-0"
+              className={`absolute inset-x-0 bottom-0 bg-white transition-opacity duration-500 ease-in-out md:group-hover:opacity-0 ${isActive ? 'opacity-0 md:opacity-100' : 'opacity-100'}`}
               style={{ padding: '20px 24px' }}
             >
               <div className="flex justify-between gap-2 text-left">
@@ -66,7 +80,9 @@ export default function TeamMemberCard({
               </div>
             </div>
 
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 px-[24px] pb-[20px] pt-[12px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+            <div
+              className={`pointer-events-none absolute inset-x-0 bottom-0 z-30 px-[24px] pb-[20px] pt-[12px] transition-opacity duration-500 ease-in-out md:group-hover:opacity-100 ${isActive ? 'opacity-100 md:opacity-0' : 'opacity-0'}`}
+            >
               <div className="flex justify-between gap-2 text-left">
                 <div className="min-w-0 flex-1">
                   <h3 className="m-0 text-[16px] font-normal text-white">
