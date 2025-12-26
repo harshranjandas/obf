@@ -250,7 +250,11 @@ export default function ContactForm() {
                 </div>
               )}
               <div className="flex items-center justify-end">
-                <Button type="submit" disabled={isSubmitting}>
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full md:w-auto"
+                >
                   {isSubmitting ? 'SUBMITTING...' : 'SUBMIT'}
                 </Button>
               </div>

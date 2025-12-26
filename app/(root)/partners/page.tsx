@@ -72,15 +72,26 @@ export default async function PartnersPage() {
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className="m-0 text-[20px] font-semibold text-black md:text-[22px]">
+                  <h3 className="m-0 text-[20px] font-semibold text-black md:text-[22px] flex items-center gap-2 justify-between">
                     {partner.name}
+                    {partner.website && (
+                      <Link
+                        href={partner.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${partner.name} on website`}
+                        className="md:hidden"
+                      >
+                        <WebsiteIcon />
+                      </Link>
+                    )}
                   </h3>
                   {partner.role && (
                     <p className="mb-5 text-[13px] leading-[1.8] text-[#999999] md:text-[14px]">
                       {partner.role}
                     </p>
                   )}
-                  <div className="right-6 top-6 mb-[24px] flex gap-2 md:absolute md:mb-0">
+                  <div className="right-6 top-6 mb-[24px] flex gap-2 md:absolute md:mb-0 hidden md:flex">
                     {partner.website && (
                       <Link
                         href={partner.website}

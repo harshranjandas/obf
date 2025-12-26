@@ -5,15 +5,15 @@ import Image from 'next/image';
 const links = [
   {
     label: 'Advisors',
-    href: '/advisor',
+    href: '/advisors',
   },
   {
     label: 'Partners',
     href: '/partners',
   },
   {
-    label: 'Team',
-    href: '/team',
+    label: 'Contact Us',
+    href: '/contact-us',
   },
 ];
 

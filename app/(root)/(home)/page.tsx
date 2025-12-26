@@ -83,8 +83,7 @@ export default function Home() {
                   introduction
                 </span>
                 <h2 className="m-0 text-[40px] md:text-[48px] font-extrabold leading-[46px] md:leading-[54px] text-[#434343]">
-                  India In The
-                  <br className="hidden md:block" />
+                  India In The <br className="hidden md:block" />
                   21st Century
                 </h2>
               </div>
