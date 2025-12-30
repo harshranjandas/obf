@@ -132,6 +132,7 @@ const MusicPlayer = () => {
 
           <button
             onClick={togglePlayPause}
+            disabled={true}
             className="w-8 h-8 flex items-center justify-center rounded-full text-white"
             style={{
               background:

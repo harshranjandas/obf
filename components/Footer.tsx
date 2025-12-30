@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
     <footer className="bg-white pb-[30px] pt-[50px] md:pb-[50px] md:pt-[100px]">
       <div className="tq-container flex flex-col">
         <div className="mb-0 flex flex-col gap-0 md:mb-[50px] md:flex-row">
-          <div className="w-full md:w-[60%]">
+          <div className="w-full md:w-[55%]">
             <h3 className="mb-[20px] text-[15px] font-normal uppercase leading-[28px] tracking-[2px] text-black">
               India’s future as imagined by OUR leaders
             </h3>
@@ -56,7 +56,7 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="inline-flex items-center text-black"
+                className="inline-flex items-center text-black cursor-not-allowed"
               >
                 <Image
                   src="/icons/instagram.svg"
@@ -70,7 +70,7 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="inline-flex items-center text-black"
+                className="inline-flex items-center text-black cursor-not-allowed"
               >
                 <Image
                   src="/icons/facebook.svg"
@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="inline-flex items-center text-black"
+                className="inline-flex items-center text-black cursor-not-allowed"
               >
                 <Image
                   src="/icons/linkedin.svg"
@@ -98,7 +98,7 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="X (Formerly Twitter)"
-                className="inline-flex items-center text-black"
+                className="inline-flex items-center text-black cursor-not-allowed"
               >
                 <Image
                   src="/icons/twitter.svg"
@@ -110,7 +110,7 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="w-full md:w-[40%] md:border-0 md:pt-0">
+          <div className="w-full md:w-[45%] md:border-0 md:pt-0">
             <div className="flex w-full flex-col-reverse justify-between md:flex-row">
               <div className="flex h-full w-full flex-col justify-between border-[#d9d9d9] pb-6 md:w-1/2 md:border-l md:pb-0 md:pl-[30px]">
                 <div>

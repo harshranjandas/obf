@@ -20,8 +20,8 @@ const menuLinks = [
     href: '/partners',
   },
   {
-    label: 'Contact Us',
-    href: '/contact-us',
+    label: 'Jobs',
+    href: '/jobs',
   },
 ];
 
@@ -41,7 +41,7 @@ const Header: React.FC = () => {
     <header className="sticky top-0 z-50 bg-white shadow-brand">
       <div className="tq-container flex items-center justify-between gap-4 p-[20px_16px] md:p-[14px_24px_22px_24px]">
         <Link href="/" className="max-w-[101px]">
-          <Image src="/logo.svg" alt="T9L Ventures" width={101} height={54} />
+          <Image src="/logo.svg" alt="One Big Future" width={101} height={54} />
         </Link>
 
         <div className="hidden flex-col items-end md:flex">

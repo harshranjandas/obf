@@ -16,22 +16,22 @@ const categories = [
   },
   {
     label: 'Policy & Governance',
-    image: '/images/category-3.webp',
+    image: '/images/category-6.webp',
     topGap: 95,
   },
   {
     label: 'Education & Skills Development',
-    image: '/images/category-4.webp',
+    image: '/images/category-3.webp',
     topGap: 0,
   },
   {
     label: 'Art & Culture ',
-    image: '/images/category-5.webp',
+    image: '/images/category-4.webp',
     topGap: 60,
   },
   {
     label: 'Sustainable Development',
-    image: '/images/category-6.webp',
+    image: '/images/category-5.webp',
     topGap: 0,
   },
 ];
@@ -87,8 +87,9 @@ const WhatIsOFBSection = () => {
               <span className="animate-pulse">|</span>
             </span>{' '}
             providing a platform for leaders <br className="hidden md:block" />
-            to share their vision for India&apos;s future and the pathways to
-            turn these possibilities into reality.
+            to share their vision for India&apos;s future and the pathways{' '}
+            <br className="hidden md:block" />
+            to turn these possibilities into reality.
           </h2>
         </div>
       </div>
