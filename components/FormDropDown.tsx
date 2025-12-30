@@ -9,7 +9,6 @@ type FormDropdownProps = {
   value: string | null;
   options: ReadonlyArray<string>;
   onSelect: (value: string | null) => void;
-  required?: boolean;
   hasError?: boolean;
 };
 
@@ -18,7 +17,6 @@ export default function FormDropdown({
   value,
   options,
   onSelect,
-  required,
   hasError,
 }: FormDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
