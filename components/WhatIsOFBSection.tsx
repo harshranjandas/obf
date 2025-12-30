@@ -115,7 +115,7 @@ const WhatIsOFBSection = () => {
                 marginTop: `${category.topGap}px`,
               }}
             >
-              <div className="bg-white border border-[#DAD8D6] p-6 shrink-0 w-[168px]">
+              <div className="bg-white border border-[#DAD8D6] p-6 shrink-0 w-[178px]">
                 <Image
                   src={category.image}
                   alt={category.label}
