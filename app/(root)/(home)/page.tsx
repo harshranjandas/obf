@@ -140,7 +140,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col md:flex-row gap-12">
             <div
-              className="p-10 w-full md:w-1/3 relative"
+              className="px-4 py-10 md:p-10 w-full md:w-1/3 relative"
               style={{
                 backgroundColor: '#FFF1E7',
                 backgroundImage: `url('/images/interview-gradient.png')`,
@@ -166,7 +166,7 @@ export default function Home() {
               </p>
             </div>
             <div
-              className="p-10 w-full md:w-1/3 relative"
+              className="px-4 py-10 md:p-10 w-full md:w-1/3 relative"
               style={{
                 backgroundColor: '#F2F2F2',
                 backgroundImage: `url('/images/podcast-gradient.png')`,
@@ -192,7 +192,7 @@ export default function Home() {
               </p>
             </div>
             <div
-              className="p-10 w-full md:w-1/3 relative"
+              className="px-4 py-10 md:p-10 w-full md:w-1/3 relative"
               style={{
                 backgroundColor: '#D4EBE0',
                 backgroundImage: `url('/images/event-gradient.png')`,
