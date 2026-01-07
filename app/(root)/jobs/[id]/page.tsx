@@ -52,9 +52,6 @@ export default async function JobDetailPage({ params }: Params) {
                 <h1 className="m-0 pt-6 text-[32px] font-bold leading-[38px] text-black md:text-[40px] md:leading-[46px]">
                   {job.title}
                 </h1>
-                <span className="text-[16px] font-medium leading-[24px] text-black">
-                  {job.subTitle}
-                </span>
               </div>
             </div>
             <section className="space-y-[70px]">
