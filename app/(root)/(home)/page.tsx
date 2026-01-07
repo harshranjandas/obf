@@ -154,7 +154,7 @@ export default function Home() {
                 alt="Interviews"
                 width={489}
                 height={417}
-                className="absolute -top-6 right-[16px] w-auto max-h-[170px]"
+                className="absolute -top-6 right-[16px] w-auto max-h-[150px] md:max-h-[170px]"
               />
               <h3 className="text-[20px] text-[#EF671F] font-semibold leading-[22px]">
                 Interviews
@@ -206,7 +206,7 @@ export default function Home() {
                 alt="Events"
                 width={459}
                 height={414}
-                className="absolute -top-4 right-4 w-auto max-h-[160px]"
+                className="absolute -top-4 right-4 w-auto max-h-[140px] md:max-h-[160px]"
               />
               <h3 className="text-[20px] text-[#046A38] font-semibold leading-[22px]">
                 Events
