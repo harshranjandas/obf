@@ -17,6 +17,34 @@ const links = [
   },
 ];
 
+const socialLinks = [
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/showcase/one-big-future/about/',
+    icon: '/icons/linkedin.svg',
+  },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/one_big_future/',
+    icon: '/icons/instagram.svg',
+  },
+  {
+    label: 'YouTube',
+    href: 'https://www.youtube.com/@OneBigFuture',
+    icon: '/icons/youtube.svg',
+  },
+  {
+    label: 'X (Formerly Twitter)',
+    href: 'https://x.com/onebigfuture',
+    icon: '/icons/twitter.svg',
+  },
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/profile.php?id=61586251529727',
+    icon: '/icons/facebook.svg',
+  },
+];
+
 export const Footer: React.FC = () => {
   const year = new Date().getFullYear();
   return (
@@ -52,62 +80,23 @@ export const Footer: React.FC = () => {
               />
             </p>
             <div className="mb-[30px] flex items-center gap-4 md:mb-0">
-              <a
-                href="https://www.instagram.com/one_big_future/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="inline-flex items-center text-black"
-              >
-                <Image
-                  src="/icons/instagram.svg"
-                  alt="Instagram"
-                  width={24}
-                  height={24}
-                />
-              </a>
-              {/* <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="inline-flex items-center text-black"
-              >
-                <Image
-                  src="/icons/facebook.svg"
-                  alt="Facebook"
-                  width={24}
-                  height={24}
-                />
-              </a> */}
-              <a
-                href="https://www.linkedin.com/showcase/one-big-future/about/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="inline-flex items-center text-black"
-              >
-                <Image
-                  src="/icons/linkedin.svg"
-                  alt="LinkedIn"
-                  width={24}
-                  height={24}
-                />
-              </a>
-              <a
-                href="https://x.com/onebigfuture"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X (Formerly Twitter)"
-                className="inline-flex items-center text-black"
-              >
-                <Image
-                  src="/icons/twitter.svg"
-                  alt="X (Formerly Twitter)"
-                  width={24}
-                  height={24}
-                />
-              </a>
+              {socialLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                  className="inline-flex items-center text-black"
+                >
+                  <Image
+                    src={link.icon}
+                    alt={link.label}
+                    width={24}
+                    height={24}
+                  />
+                </a>
+              ))}
             </div>
           </div>
 

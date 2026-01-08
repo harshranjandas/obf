@@ -2,36 +2,6 @@ import { Job } from '@/types/type';
 
 export const jobs: Job[] = [
   {
-    id: 'junior-content-writer',
-    title: 'Junior Content Writer',
-    subTitle: '2-3 years experience',
-    location: 'Delhi (IN)',
-    locationType: 'On-Site',
-    type: 'Full-Time',
-    logo: '/images/job-logo.png',
-    theRole:
-      'Support long-form editorial content across podcasts, interviews, and events at One Big Future.',
-    whatYouDo: [
-      'Draft long-form articles, interview features, and podcast-to-text pieces',
-      'Support background research, briefing notes, and editorial preparation',
-      'Edit transcripts and assist with revisions, fact-checking, and accuracy checks',
-      'Help structure narratives under senior editorial guidance',
-      'Collaborate with campaigns to adapt content across formats',
-    ],
-    whatWereLookingFor: [
-      'Strong writing and editing skills with narrative clarity',
-      'Research aptitude and interest in entrepreneurship, policy, and technology',
-      'Ability to translate complex ideas into clear, reader-ready content',
-      'India-focused perspective with global awareness',
-    ],
-    preferredExperience: [
-      '2–3 years in long-form writing, research, or editorial roles',
-      'Exposure to reportage, features, policy writing, or think tanks',
-      'Podcast-to-text or interview-based writing is a plus',
-      'SEO-only or purely marketing-led content is not a fit',
-    ],
-  },
-  {
     id: 'senior-content-writer',
     title: 'Senior Content Writer',
     subTitle: '5-7 years experience',
@@ -61,6 +31,36 @@ export const jobs: Job[] = [
       'Background in reputed media, policy writing, academia, or think tanks',
       'Strong portfolio of essays, features, interviews, or thought leadership',
       'Experience with podcast-to-text or interview-led formats',
+      'SEO-only or purely marketing-led content is not a fit',
+    ],
+  },
+  {
+    id: 'junior-content-writer',
+    title: 'Junior Content Writer',
+    subTitle: '2-3 years experience',
+    location: 'Delhi (IN)',
+    locationType: 'On-Site',
+    type: 'Full-Time',
+    logo: '/images/job-logo.png',
+    theRole:
+      'Support long-form editorial content across podcasts, interviews, and events at One Big Future.',
+    whatYouDo: [
+      'Draft long-form articles, interview features, and podcast-to-text pieces',
+      'Support background research, briefing notes, and editorial preparation',
+      'Edit transcripts and assist with revisions, fact-checking, and accuracy checks',
+      'Help structure narratives under senior editorial guidance',
+      'Collaborate with campaigns to adapt content across formats',
+    ],
+    whatWereLookingFor: [
+      'Strong writing and editing skills with narrative clarity',
+      'Research aptitude and interest in entrepreneurship, policy, and technology',
+      'Ability to translate complex ideas into clear, reader-ready content',
+      'India-focused perspective with global awareness',
+    ],
+    preferredExperience: [
+      '2–3 years in long-form writing, research, or editorial roles',
+      'Exposure to reportage, features, policy writing, or think tanks',
+      'Podcast-to-text or interview-based writing is a plus',
       'SEO-only or purely marketing-led content is not a fit',
     ],
   },
