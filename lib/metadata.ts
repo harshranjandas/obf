@@ -1,6 +1,6 @@
-const appName = 'One Big Future | India’s Future as Imagined by Our Leaders';
+const appName = 'One Big Future | India’s Future as Imagined by Global Leaders';
 const appDescription =
-  'One Big Future is a platform featuring leaders, innovators, and policymakers sharing bold ideas shaping India in the 21st century through interviews, podcasts, and events.';
+  'One Big Future is a global platform featuring leaders from business, policy, science, culture, and philanthropy shaping India’s role in the 21st century.';
 export const appMetadata = {
   title: appName,
   description: appDescription,
