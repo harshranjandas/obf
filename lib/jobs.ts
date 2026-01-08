@@ -13,17 +13,16 @@ export const jobs: Job[] = [
       'Support long-form editorial content across podcasts, interviews, and events at One Big Future.',
     whatYouDo: [
       'Draft long-form articles, interview features, and podcast-to-text pieces',
-      'Support background research, briefing notes, and editorial prep',
+      'Support background research, briefing notes, and editorial preparation',
       'Edit transcripts and assist with revisions, fact-checking, and accuracy checks',
       'Help structure narratives under senior editorial guidance',
       'Collaborate with campaigns to adapt content across formats',
     ],
     whatWereLookingFor: [
-      'Strong writing skills with a knack for storytelling',
-      'Experience in podcast transcription and editing',
-      'Attention to detail and accuracy in fact-checking',
-      'Ability to collaborate with diverse teams',
-      'Familiarity with podcasting and event journalism',
+      'Strong writing and editing skills with narrative clarity',
+      'Research aptitude and interest in entrepreneurship, policy, and technology',
+      'Ability to translate complex ideas into clear, reader-ready content',
+      'India-focused perspective with global awareness',
     ],
     preferredExperience: [
       '2–3 years in long-form writing, research, or editorial roles',

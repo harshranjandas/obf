@@ -46,7 +46,9 @@ const Header: React.FC = () => {
 
         <div className="hidden flex-col items-end md:flex">
           <div className="mb-[14px]">
-            <Button variant="secondary">Contact us</Button>
+            <Link href="/contact-us">
+              <Button variant="secondary">Contact us</Button>
+            </Link>
           </div>
           <nav className="border-t border-[#efeeec] pt-[20px]">
             <ul className="m-0 flex list-none gap-[60px] p-0">

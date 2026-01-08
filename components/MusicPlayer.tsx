@@ -16,8 +16,8 @@ const MusicPlayer = () => {
   const [duration, setDuration] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [audioFile] = useState<AudioFile>({
-    url: '/audio/Podcasting.mp3',
-    name: 'Podcasting',
+    url: '/audio/obf-audio.mp3',
+    name: 'OFB Podcast',
   });
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const effectiveDuration = duration || 100;
@@ -132,7 +132,6 @@ const MusicPlayer = () => {
 
           <button
             onClick={togglePlayPause}
-            disabled={true}
             className="w-8 h-8 flex items-center justify-center rounded-full text-white"
             style={{
               background:

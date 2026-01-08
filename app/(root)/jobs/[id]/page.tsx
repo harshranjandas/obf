@@ -63,7 +63,7 @@ export default async function JobDetailPage({ params }: Params) {
               </div>
               <div className="space-y-4">
                 <h2 className="text-[20px] font-bold text-black">
-                  What you’ll do
+                  What You’ll Do
                 </h2>
 
                 <ul className="list-outside list-disc space-y-3 pl-5 text-base font-light leading-relaxed text-black [&_code]:rounded [&_code]:bg-gray-100 [&_code]:px-1 [&_code]:font-mono [&_em]:italic [&_s]:line-through [&_strong]:font-bold [&_u]:underline">
@@ -79,7 +79,7 @@ export default async function JobDetailPage({ params }: Params) {
               </div>
               <div className="space-y-4">
                 <h2 className="text-[20px] font-bold text-black">
-                  What we’re looking for
+                  What We’re Looking For
                 </h2>
 
                 <ul className="list-outside list-disc space-y-3 pl-5 text-base font-light leading-relaxed text-black [&_code]:rounded [&_code]:bg-gray-100 [&_code]:px-1 [&_code]:font-mono [&_em]:italic [&_s]:line-through [&_strong]:font-bold [&_u]:underline">
@@ -112,7 +112,9 @@ export default async function JobDetailPage({ params }: Params) {
                 </ul>
               </div>
               <div className="space-y-4">
-                <h2 className="text-[20px] font-bold text-black">To apply</h2>
+                <h2 className="text-[20px] font-bold text-black">
+                  How to Apply
+                </h2>
                 <p className="text-base font-light leading-relaxed text-black [&_code]:rounded [&_code]:bg-gray-100 [&_code]:px-1 [&_code]:font-mono [&_em]:italic [&_s]:line-through [&_strong]:font-bold [&_u]:underline">
                   Share your CV and 3–4 long-form writing samples (links
                   preferred).
