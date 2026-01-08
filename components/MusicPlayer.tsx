@@ -16,7 +16,7 @@ const MusicPlayer = () => {
   const [duration, setDuration] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [audioFile] = useState<AudioFile>({
-    url: '/audio/obf-audio.mp3',
+    url: '/audio/obf-intro.mp3',
     name: 'OFB Podcast',
   });
   const audioRef = useRef<HTMLAudioElement | null>(null);
