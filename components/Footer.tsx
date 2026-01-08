@@ -18,6 +18,7 @@ const links = [
 ];
 
 export const Footer: React.FC = () => {
+  const year = new Date().getFullYear();
   return (
     <footer className="bg-white pb-[30px] pt-[50px] md:pb-[50px] md:pt-[100px]">
       <div className="tq-container flex flex-col">
@@ -159,7 +160,7 @@ export const Footer: React.FC = () => {
             />
           </Link>
           <p className="text-[12px] uppercase font-normal leading-tight text-black">
-            &copy; 2025 One Big Future
+            &copy; {year} One Big Future
           </p>
         </div>
       </div>
