@@ -53,11 +53,11 @@ export const Footer: React.FC = () => {
             </p>
             <div className="mb-[30px] flex items-center gap-4 md:mb-0">
               <a
-                href="#"
+                href="https://www.instagram.com/one_big_future/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="inline-flex items-center text-black cursor-not-allowed"
+                className="inline-flex items-center text-black"
               >
                 <Image
                   src="/icons/instagram.svg"
@@ -66,12 +66,12 @@ export const Footer: React.FC = () => {
                   height={24}
                 />
               </a>
-              <a
+              {/* <a
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="inline-flex items-center text-black cursor-not-allowed"
+                aria-label="Facebook"
+                className="inline-flex items-center text-black"
               >
                 <Image
                   src="/icons/facebook.svg"
@@ -79,13 +79,13 @@ export const Footer: React.FC = () => {
                   width={24}
                   height={24}
                 />
-              </a>
+              </a> */}
               <a
-                href="#"
+                href="https://www.linkedin.com/showcase/one-big-future/about/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="inline-flex items-center text-black cursor-not-allowed"
+                className="inline-flex items-center text-black"
               >
                 <Image
                   src="/icons/linkedin.svg"
@@ -95,11 +95,11 @@ export const Footer: React.FC = () => {
                 />
               </a>
               <a
-                href="#"
+                href="https://x.com/onebigfuture"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="X (Formerly Twitter)"
-                className="inline-flex items-center text-black cursor-not-allowed"
+                className="inline-flex items-center text-black"
               >
                 <Image
                   src="/icons/twitter.svg"
