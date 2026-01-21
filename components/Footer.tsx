@@ -3,10 +3,10 @@ import React from 'react';
 import Image from 'next/image';
 
 const links = [
-  {
-    label: 'Advisors',
-    href: '/advisors',
-  },
+  // {
+  //   label: 'Advisors',
+  //   href: '/advisors',
+  // },
   {
     label: 'Partners',
     href: '/partners',

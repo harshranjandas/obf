@@ -11,10 +11,10 @@ import MenuIcon from '@/components/icons/MenuIcon';
 import Button from './ui/Button';
 
 const menuLinks = [
-  {
-    label: 'Advisors',
-    href: '/advisors',
-  },
+  // {
+  //   label: 'Advisors',
+  //   href: '/advisors',
+  // },
   {
     label: 'Partners',
     href: '/partners',

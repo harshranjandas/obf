@@ -10,7 +10,7 @@ const sesClient = new SESClient({
 });
 
 const ADMIN_EMAIL = 'hello@t9l.com';
-const DEFAULT_RECIPIENTS = ['arun@t9l.com'];
+const DEFAULT_RECIPIENTS = ['tanvi@t9l.com'];
 
 const RECIPIENT_EMAILS =
   process.env.CONTACT_US_RECIPIENTS?.split(',')
