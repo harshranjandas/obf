@@ -46,7 +46,8 @@ interface Partner {
 
 async function getPartners(): Promise<Partner[]> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3002';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 
+      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3002');
     const response = await fetch(`${baseUrl}/api/public/partners`, {
       next: { revalidate: 60 }, // Revalidate every 60 seconds
     });
