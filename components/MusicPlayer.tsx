@@ -5,20 +5,19 @@ import { PlayIcon } from './icons/PlayIcon';
 import { PauseIcon } from './icons/PauseIcon';
 import { NextIcon } from './icons/NextIcon';
 
-interface AudioFile {
-  url: string;
-  name: string;
+interface MusicPlayerProps {
+  audioUrl?: string;
+  audioName?: string;
 }
 
-const MusicPlayer = () => {
+const MusicPlayer = ({ 
+  audioUrl = '/audio/obf-intro.mp3', 
+  audioName = 'OBF Podcast' 
+}: MusicPlayerProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-  const [audioFile] = useState<AudioFile>({
-    url: '/audio/obf-intro.mp3',
-    name: 'OFB Podcast',
-  });
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const effectiveDuration = duration || 100;
   const progressPercent = Math.min(
@@ -47,7 +46,7 @@ const MusicPlayer = () => {
       audio.removeEventListener('loadedmetadata', updateDuration);
       audio.removeEventListener('ended', handleEnded);
     };
-  }, [audioFile, isDragging]);
+  }, [audioUrl, isDragging]);
 
   const togglePlayPause = () => {
     if (isPlaying) {
@@ -131,7 +130,9 @@ const MusicPlayer = () => {
           </button>
 
           <button
+            type="button"
             onClick={togglePlayPause}
+            aria-label={isPlaying ? `Pause ${audioName}` : `Play ${audioName}`}
             className="w-8 h-8 flex items-center justify-center rounded-full text-white"
             style={{
               background:
@@ -151,7 +152,7 @@ const MusicPlayer = () => {
           </button>
         </div>
 
-        <audio ref={audioRef} src={audioFile.url} />
+        <audio ref={audioRef} src={audioUrl} />
       </div>
     </div>
   );

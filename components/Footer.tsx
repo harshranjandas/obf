@@ -1,12 +1,10 @@
+'use client';
+
 import Link from 'next/link';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const links = [
-  // {
-  //   label: 'Advisors',
-  //   href: '/advisors',
-  // },
   {
     label: 'Partners',
     href: '/partners',
@@ -17,47 +15,110 @@ const links = [
   },
 ];
 
-const socialLinks = [
-  {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/showcase/one-big-future/about/',
-    icon: '/icons/linkedin.svg',
-  },
-  {
-    label: 'Instagram',
-    href: 'https://www.instagram.com/one_big_future/',
-    icon: '/icons/instagram.svg',
-  },
-  {
-    label: 'YouTube',
-    href: 'https://www.youtube.com/@OneBigFuture',
-    icon: '/icons/youtube.svg',
-  },
-  {
-    label: 'X (Formerly Twitter)',
-    href: 'https://x.com/onebigfuture',
-    icon: '/icons/twitter.svg',
-  },
-  {
-    label: 'Facebook',
-    href: 'https://www.facebook.com/profile.php?id=61586251529727',
-    icon: '/icons/facebook.svg',
-  },
-];
+// Icon mapping for social networks
+const getSocialIcon = (name: string): string => {
+  const iconMap: Record<string, string> = {
+    'LinkedIn': '/icons/linkedin.svg',
+    'Instagram': '/icons/instagram.svg',
+    'YouTube': '/icons/youtube.svg',
+    'X (Formerly Twitter)': '/icons/twitter.svg',
+    'Twitter': '/icons/twitter.svg',
+    'Facebook': '/icons/facebook.svg',
+  };
+  return iconMap[name] || '/icons/linkedin.svg';
+};
+
+interface HomepageSettings {
+  address: string;
+  socialNetworks: Array<{
+    name: string;
+    url: string;
+    enabled: boolean;
+    order: number;
+  }>;
+}
 
 export const Footer: React.FC = () => {
   const year = new Date().getFullYear();
+  const [settings, setSettings] = useState<HomepageSettings | null>(null);
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const response = await fetch('/api/public/homepage-settings');
+        if (response.ok) {
+          const data = await response.json();
+          setSettings({
+            address: data.address || 'C7, SDA Commercial Complex\nOpposite IIT Campus\nNew Delhi 110016, India',
+            socialNetworks: data.socialNetworks || [],
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching footer settings:', error);
+        // Use defaults on error
+        setSettings({
+          address: 'C7, SDA Commercial Complex\nOpposite IIT Campus\nNew Delhi 110016, India',
+          socialNetworks: [],
+        });
+      }
+    };
+
+    fetchSettings();
+  }, []);
+
+  // Default social networks if settings not loaded
+  const defaultSocialNetworks = [
+    {
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com/showcase/one-big-future/about/',
+      enabled: true,
+      order: 0,
+    },
+    {
+      name: 'Instagram',
+      url: 'https://www.instagram.com/one_big_future/',
+      enabled: true,
+      order: 1,
+    },
+    {
+      name: 'YouTube',
+      url: 'https://www.youtube.com/@OneBigFuture',
+      enabled: true,
+      order: 2,
+    },
+    {
+      name: 'X (Formerly Twitter)',
+      url: 'https://x.com/onebigfuture',
+      enabled: true,
+      order: 3,
+    },
+    {
+      name: 'Facebook',
+      url: 'https://www.facebook.com/profile.php?id=61586251529727',
+      enabled: true,
+      order: 4,
+    },
+  ];
+
+  const socialNetworks = settings?.socialNetworks || defaultSocialNetworks;
+  const address = settings?.address || 'C7, SDA Commercial Complex\nOpposite IIT Campus\nNew Delhi 110016, India';
+
+  // Filter enabled social networks and sort by order
+  const enabledSocialNetworks = socialNetworks
+    .filter((network) => network.enabled)
+    .sort((a, b) => a.order - b.order);
+
   return (
     <footer className="bg-white pb-[30px] pt-[50px] md:pb-[50px] md:pt-[100px]">
       <div className="tq-container flex flex-col">
         <div className="mb-0 flex flex-col gap-0 md:mb-[50px] md:flex-row">
           <div className="w-full md:w-[55%]">
             <h3 className="mb-[20px] text-[15px] font-normal uppercase leading-[28px] tracking-[2px] text-black">
-              India’s future as imagined by OUR leaders
+              India's future as imagined by OUR leaders
             </h3>
             <p className="mb-[30px] pr-2 text-[14px] leading-[24px] text-[#999]">
               One Big Future is a platform for leaders to share their vision for
-              India’s <br />
+              India's <br />
               tomorrow and the pathways to turn these possibilities into
               reality.
             </p>
@@ -80,18 +141,18 @@ export const Footer: React.FC = () => {
               />
             </p>
             <div className="mb-[30px] flex items-center gap-4 md:mb-0">
-              {socialLinks.map((link) => (
+              {enabledSocialNetworks.map((network) => (
                 <a
-                  key={link.href}
-                  href={link.href}
+                  key={network.url}
+                  href={network.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={link.label}
+                  aria-label={network.name}
                   className="inline-flex items-center text-black"
                 >
                   <Image
-                    src={link.icon}
-                    alt={link.label}
+                    src={getSocialIcon(network.name)}
+                    alt={network.name}
                     width={24}
                     height={24}
                   />
@@ -108,9 +169,8 @@ export const Footer: React.FC = () => {
                     Address
                   </p>
                   <address className="text-sm not-italic leading-6">
-                    <p className="my-1 text-[#999]">
-                      C7, SDA Commercial Complex
-                      <br /> Opposite IIT Campus <br /> New Delhi 110016, India
+                    <p className="my-1 text-[#999] whitespace-pre-line">
+                      {address}
                     </p>
                   </address>
                 </div>

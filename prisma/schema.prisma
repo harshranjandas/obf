@@ -1,0 +1,173 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String
+  name          String?
+  role          String    @default("admin")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Page {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  content     String?  @db.Text
+  published   Boolean  @default(false)
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  seo         PageSEO?
+}
+
+model PageSEO {
+  id          String   @id @default(cuid())
+  pageId      String   @unique
+  page        Page     @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  title       String?
+  description String?  @db.Text
+  keywords    String?  @db.Text
+  ogTitle     String?
+  ogDescription String? @db.Text
+  ogImage     String?
+  ogType      String?  @default("website")
+  twitterCard String?  @default("summary_large_image")
+  twitterTitle String?
+  twitterDescription String? @db.Text
+  twitterImage String?
+  canonicalUrl String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Partner {
+  id          String   @id @default(cuid())
+  name        String
+  role        String?
+  bio         String?  @db.Text
+  image       String?
+  website     String?
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Job {
+  id                  String   @id @default(cuid())
+  title               String
+  subTitle            String?
+  location            String
+  locationType        String
+  type                String
+  logo                String?
+  theRole             String   @db.Text
+  whatYouDo           String[] // Array of strings
+  whatWereLookingFor  String[] // Array of strings
+  preferredExperience String[] // Array of strings
+  published           Boolean  @default(false)
+  featured            Boolean  @default(false)
+  order               Int      @default(0)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  applications        JobApplication[]
+}
+
+model JobApplication {
+  id              String   @id @default(cuid())
+  jobId            String
+  job              Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  fullName         String
+  email            String
+  contactNumber    String
+  noticePeriod     String
+  currentLocation  String?
+  currentCompany   String
+  portfolioUrl     String?
+  resumeUrl        String?
+  coverLetter      String?  @db.Text
+  status           String   @default("pending") // pending, reviewed, shortlisted, rejected
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model SocialNetwork {
+  id          String   @id @default(cuid())
+  name        String   @unique // LinkedIn, Instagram, YouTube, Twitter, Facebook
+  url         String
+  icon        String?  // Path to icon
+  enabled     Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Analytics {
+  id          String   @id @default(cuid())
+  eventType   String   // page_view, click, form_submit, etc.
+  page        String?
+  referrer    String?
+  userAgent   String?
+  ip          String?
+  country     String?
+  city        String?
+  device      String?
+  browser     String?
+  os          String?
+  metadata    Json?    // Additional event data
+  createdAt   DateTime @default(now())
+}
+
+model Content {
+  id          String   @id @default(cuid())
+  type        String   // interview, podcast, event, article
+  title       String
+  slug        String   @unique
+  description String?  @db.Text
+  content     String?  @db.Text
+  imageUrl    String?
+  videoUrl    String?
+  audioUrl    String?
+  published   Boolean  @default(false)
+  featured    Boolean  @default(false)
+  category    String?
+  tags        String[]
+  author      String?
+  metadata    Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  seo         ContentSEO?
+}
+
+model ContentSEO {
+  id          String   @id @default(cuid())
+  contentId   String   @unique
+  content     Content  @relation(fields: [contentId], references: [id], onDelete: Cascade)
+  title       String?
+  description String?  @db.Text
+  keywords    String?  @db.Text
+  ogTitle     String?
+  ogDescription String? @db.Text
+  ogImage     String?
+  ogType      String?  @default("article")
+  twitterCard String?  @default("summary_large_image")
+  twitterTitle String?
+  twitterDescription String? @db.Text
+  twitterImage String?
+  canonicalUrl String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

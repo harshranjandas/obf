@@ -1,0 +1,39 @@
+/* Custom admin panel styles */
+
+/* Fix bullet points in rich text editor */
+.rich-text-lexical ul,
+.lexical-editor ul,
+[class*="richText"] ul,
+[class*="lexical"] ul {
+  list-style-type: disc !important;
+  padding-left: 1.5em !important;
+  margin-left: 1em !important;
+}
+
+.rich-text-lexical ol,
+.lexical-editor ol,
+[class*="richText"] ol,
+[class*="lexical"] ol {
+  list-style-type: decimal !important;
+  padding-left: 1.5em !important;
+  margin-left: 1em !important;
+}
+
+.rich-text-lexical li,
+.lexical-editor li,
+[class*="richText"] li,
+[class*="lexical"] li {
+  display: list-item !important;
+}
+
+/* Ensure nested lists show properly */
+.rich-text-lexical ul ul,
+[class*="lexical"] ul ul {
+  list-style-type: circle !important;
+}
+
+.rich-text-lexical ol ol,
+[class*="lexical"] ol ol {
+  list-style-type: lower-alpha !important;
+}
+

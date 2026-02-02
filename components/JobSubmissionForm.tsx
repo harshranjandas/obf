@@ -5,7 +5,7 @@ import Image from 'next/image';
 import SuccessIcon from './icons/SuccessIcon';
 import Button from './ui/Button';
 import FormDropdown from './FormDropDown';
-import { Job } from '@/types/type';
+import { JobForForm } from '@/types/type';
 
 const noticePeriodOptions = [
   'Immediate Joining',
@@ -15,7 +15,7 @@ const noticePeriodOptions = [
 ] as const;
 const MAX_FILE_SIZE = 30 * 1024 * 1024; // 30MB in bytes
 
-export default function JobSubmissionForm({ job }: { job: Job }) {
+export default function JobSubmissionForm({ job }: { job: JobForForm }) {
   const [selectedResume, setSelectedResume] = useState<File | null>(null);
   const [noticePeriod, setNoticePeriod] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
