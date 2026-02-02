@@ -2,6 +2,19 @@ import { NextResponse } from 'next/server'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 
+// Map upload filenames to public folder paths for Vercel deployment
+const uploadToPublicMap: Record<string, string> = {
+  'iamai.webp': '/images/partners/iamai.jpg',
+  'T9L.webp': '/images/partners/t9l.jpg',
+  'interviews.webp': '/images/interviews.webp',
+  'podcasts.webp': '/images/podcasts.webp',
+  'events.webp': '/images/events.webp',
+  'podcast-gradient.png': '/images/podcast-gradient.png',
+  'event-gradient.png': '/images/event-gradient.png',
+  'interview-gradient.png': '/images/interview-gradient.png',
+  'obf-intro.mp3': '/audio/obf-intro.mp3',
+}
+
 // Helper function to get image URL from Payload upload
 function getImageUrl(upload: any): string | null {
   if (!upload) return null
@@ -18,6 +31,10 @@ function getImageUrl(upload: any): string | null {
     return `/${upload}`
   }
   if (typeof upload === 'object') {
+    // Check if we have a mapping for this filename
+    if (upload.filename && uploadToPublicMap[upload.filename]) {
+      return uploadToPublicMap[upload.filename]
+    }
     if (upload.url) {
       if (upload.url.startsWith('http')) {
         try {
@@ -33,7 +50,8 @@ function getImageUrl(upload: any): string | null {
       return `/${upload.url}`
     }
     if (upload.filename) {
-      return `/api/uploads/file/${upload.filename}`
+      // Check mapping again for filenames
+      return uploadToPublicMap[upload.filename] || `/api/uploads/file/${upload.filename}`
     }
   }
   return null

@@ -2,6 +2,28 @@ import { NextResponse } from 'next/server'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 
+// Map upload filenames to public folder paths for Vercel deployment
+const uploadToPublicMap: Record<string, string> = {
+  'iamai.webp': '/images/partners/iamai.jpg',
+  'T9L.webp': '/images/partners/t9l.jpg',
+  'interviews.webp': '/images/interviews.webp',
+  'podcasts.webp': '/images/podcasts.webp',
+  'events.webp': '/images/events.webp',
+  'obf-intro.mp3': '/audio/obf-intro.mp3',
+}
+
+// Rewrite upload URLs to public folder paths
+function rewriteImageUrl(image: any): any {
+  if (!image) return image
+  if (typeof image === 'object' && image.filename) {
+    const publicPath = uploadToPublicMap[image.filename]
+    if (publicPath) {
+      return { ...image, url: publicPath }
+    }
+  }
+  return image
+}
+
 // Public GET endpoint for frontend - fetches all partners ordered by order field
 export async function GET() {
   try {
@@ -17,7 +39,13 @@ export async function GET() {
       },
     })
 
-    return NextResponse.json(partners.docs || [])
+    // Rewrite image URLs for Vercel deployment
+    const partnersWithFixedUrls = (partners.docs || []).map((partner: any) => ({
+      ...partner,
+      image: rewriteImageUrl(partner.image),
+    }))
+
+    return NextResponse.json(partnersWithFixedUrls)
   } catch (error) {
     console.error('Error fetching partners:', error)
     return NextResponse.json({ error: 'Failed to fetch partners' }, { status: 500 })
