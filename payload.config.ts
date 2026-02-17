@@ -68,20 +68,19 @@ export default buildConfig({
     push: false, // Disabled so app starts without blocking on schema push; run scripts/run-fix-locked-documents-fk.sh if you add new collections
   }),
   sharp,
-  plugins: [
-    // Use Vercel Blob for uploads when BLOB_READ_WRITE_TOKEN is set (e.g. on Vercel).
-    // When not set, uploads use local staticDir (development).
-    ...(process.env.BLOB_READ_WRITE_TOKEN
-      ? [
-          vercelBlobStorage({
-            enabled: true,
-            collections: {
-              uploads: true,
-            },
-            token: process.env.BLOB_READ_WRITE_TOKEN,
-            clientUploads: true, // Bypass Vercel 4.5MB serverless body limit by uploading from client
-          }),
-        ]
-      : []),
-  ],
+  // Build plugins at runtime so BLOB_READ_WRITE_TOKEN is read when the server runs (not at build time).
+  // On Vercel: set BLOB_READ_WRITE_TOKEN in Project → Settings → Environment Variables.
+  plugins: (() => {
+    const token = process.env.BLOB_READ_WRITE_TOKEN
+    if (!token) return []
+    return [
+      vercelBlobStorage({
+        enabled: true,
+        collections: { uploads: true },
+        token,
+        // false = server uploads to Blob (works for images under Vercel’s 4.5MB body limit)
+        clientUploads: false,
+      }),
+    ]
+  })(),
 })
