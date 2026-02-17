@@ -18,6 +18,7 @@ class PoolWithSearchPath extends Pool {
 }
 const pgWithSearchPath = { ...pg, Pool: PoolWithSearchPath }
 
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { Advisors } from './src/collections/Advisors'
 import { Users } from './src/collections/Users'
 import { Pages } from './src/collections/Pages'
@@ -67,5 +68,20 @@ export default buildConfig({
     push: false, // Disabled so app starts without blocking on schema push; run scripts/run-fix-locked-documents-fk.sh if you add new collections
   }),
   sharp,
-  plugins: [],
+  plugins: [
+    // Use Vercel Blob for uploads when BLOB_READ_WRITE_TOKEN is set (e.g. on Vercel).
+    // When not set, uploads use local staticDir (development).
+    ...(process.env.BLOB_READ_WRITE_TOKEN
+      ? [
+          vercelBlobStorage({
+            enabled: true,
+            collections: {
+              uploads: true,
+            },
+            token: process.env.BLOB_READ_WRITE_TOKEN,
+            clientUploads: true, // Bypass Vercel 4.5MB serverless body limit by uploading from client
+          }),
+        ]
+      : []),
+  ],
 })
