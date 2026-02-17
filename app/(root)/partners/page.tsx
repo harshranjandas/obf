@@ -1,7 +1,7 @@
 import WebsiteIcon from '@/components/icons/WebsiteIcon';
 import Image from 'next/image';
-import { Metadata } from 'next';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
 
@@ -111,72 +111,119 @@ export default async function PartnersPage() {
   };
 
   return (
-    <section className="bg-white px-[16px] py-[50px] md:px-6 md:py-[100px]">
-      <div className="tq-container">
-        <h1 className="text-[38px] font-extrabold leading-[1.2] mb-[70px] text-center tracking-tight md:text-[50px]">
-          Partners
-        </h1>
+    <section className="relative w-full overflow-hidden bg-white pb-20 pt-12 md:pb-28 md:pt-20">
+      {/* Grid SVG background (same as Advisors) */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        aria-hidden
+      >
+        <div
+          className="h-full w-full"
+          style={{
+            backgroundImage: 'url(/images/advisors-grid-bg.svg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
       </div>
-      <div className="tq-container w-full">
+
+      {/* Decorative: top-right blurred orange circle */}
+      <div
+        className="pointer-events-none absolute -right-[20%] top-[-10%] z-[1] h-[500px] w-[500px] md:-right-[10%] md:top-[-15%]"
+        aria-hidden
+      >
+        <div
+          className="h-full w-full rounded-full opacity-[0.1]"
+          style={{
+            background: 'radial-gradient(circle, #FFA377 0%, #FF671F 40%, transparent 70%)',
+            filter: 'blur(40px)',
+          }}
+        />
+      </div>
+
+      {/* Diagonal gradient overlay */}
+      <div
+        className="pointer-events-none absolute left-0 top-0 z-[1] h-[800px] w-full max-w-[644px]"
+        style={{
+          background:
+            'linear-gradient(240.635deg, rgba(255, 255, 255, 0) 43.35%, rgb(255, 255, 255) 83.086%)',
+        }}
+        aria-hidden
+      />
+
+      {/* Decorative: bottom-left blurred orange circle */}
+      <div
+        className="pointer-events-none absolute -left-12 bottom-0 z-[1] h-[360px] w-[360px] opacity-20 md:h-[467px] md:w-[467px]"
+        aria-hidden
+      >
+        <div
+          className="h-full w-full rounded-full opacity-60"
+          style={{
+            background: 'radial-gradient(circle, #FFA377 0%, #FF671F 50%, transparent 70%)',
+            filter: 'blur(40px)',
+          }}
+        />
+      </div>
+
+      {/* Content — same typography and layout as Advisors */}
+      <div className="tq-container relative z-10">
+        <div className="flex flex-col items-center gap-[30px]">
+          <h1 className="w-full text-center font-bold leading-[48px] text-[#434343] text-[40px] md:text-[50px]">
+            Partners
+          </h1>
+          <p className="w-full text-center font-normal leading-[30px] text-[#333] text-[16px] md:text-[18px]">
+            Institutional and knowledge partners contributing to India&apos;s future discourse.
+          </p>
+        </div>
+
         {partners.length === 0 ? (
-          <p className="text-center text-gray-500">No partners available at the moment.</p>
+          <p className="mt-12 text-center text-[#666]">No partners available at the moment.</p>
         ) : (
-          <div className="space-y-6">
+          <div className="mt-12 space-y-6 md:mt-16">
             {partners.map((partner) => {
               const imageUrl = getImageUrl(partner.image);
               return (
-                <div
+                <article
                   key={`partner-${partner.id}`}
-                  className="relative flex flex-col gap-6 border border-[#EDEDED] p-6 md:flex-row"
+                  className="relative flex flex-col gap-6 border border-[#dad8d6] bg-white p-6 md:flex-row"
                 >
-                  <div className="relative h-auto w-full md:h-[200px] md:w-[200px] flex-shrink-0">
+                  <div className="relative h-[200px] w-full shrink-0 overflow-hidden bg-[#f5f5f5] md:h-[200px] md:w-[200px]">
                     <Image
                       src={imageUrl}
                       alt={partner.name}
-                      width={200}
-                      height={200}
-                      className="object-cover w-full h-full"
+                      fill
+                      sizes="(min-width: 768px) 200px, 100vw"
+                      className="object-cover object-top"
                     />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="m-0 text-[20px] font-semibold text-black md:text-[22px] flex items-center gap-2 justify-between">
-                      {partner.name}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-start justify-between gap-2">
+                      <h3 className="m-0 text-[20px] font-semibold text-black md:text-[22px]">
+                        {partner.name}
+                      </h3>
                       {partner.website && (
                         <Link
                           href={partner.website}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label={`${partner.name} on website`}
-                          className="md:hidden"
-                        >
-                          <WebsiteIcon />
-                        </Link>
-                      )}
-                    </h3>
-                    {partner.fullName && (
-                      <p className="mb-5 text-[13px] leading-[1.8] text-[#999999] md:text-[14px]">
-                        {partner.fullName}
-                      </p>
-                    )}
-                    <div className="right-6 top-6 mb-[24px] flex gap-2 md:absolute md:mb-0 hidden md:flex">
-                      {partner.website && (
-                        <Link
-                          href={partner.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${partner.name} on website`}
+                          aria-label={`${partner.name} website`}
+                          className="shrink-0 text-[#0A66C2]"
                         >
                           <WebsiteIcon />
                         </Link>
                       )}
                     </div>
-                    {partner.bio && (
-                      <p className="font-[16px] leading-[1.8] text-black">
-                        {partner.bio}
+                    {partner.fullName && (
+                      <p className="mb-4 mt-1 text-[13px] leading-[1.8] text-[#999] md:text-[14px]">
+                        {partner.fullName}
                       </p>
                     )}
+                    {partner.bio && (
+                      <p className="text-[16px] leading-[1.8] text-black">{partner.bio}</p>
+                    )}
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>

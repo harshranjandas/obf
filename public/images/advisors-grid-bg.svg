@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" preserveAspectRatio="none" viewBox="0 0 1696 789">
+  <defs>
+    <!-- Grid pattern: thin lines forming small square blocks (24×24) -->
+    <pattern id="gridCells" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 24 24 M 0 24 L 24 24" stroke="#dad8d6" stroke-width="0.5" fill="none" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <rect width="1696" height="789" fill="url(#gridCells)"/>
+</svg>

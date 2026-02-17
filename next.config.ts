@@ -17,15 +17,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  redirects: async () => {
-    return [
-      {
-        source: '/advisors',
-        destination: '/',
-        permanent: true,
-      },
-    ];
-  },
 };
 
 export default withPayload(nextConfig);

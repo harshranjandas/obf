@@ -18,9 +18,11 @@ class PoolWithSearchPath extends Pool {
 }
 const pgWithSearchPath = { ...pg, Pool: PoolWithSearchPath }
 
+import { Advisors } from './src/collections/Advisors'
 import { Users } from './src/collections/Users'
 import { Pages } from './src/collections/Pages'
 import { Partners } from './src/collections/Partners'
+import { Teams } from './src/collections/Teams'
 import { Jobs } from './src/collections/Jobs'
 import { JobApplications } from './src/collections/JobApplications'
 import { SocialNetworks } from './src/collections/SocialNetworks'
@@ -37,11 +39,14 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    suppressHydrationWarning: true,
   },
   collections: [
     Users,
     Pages,
     Partners,
+    Advisors,
+    Teams,
     Jobs,
     JobApplications,
     SocialNetworks,
@@ -59,7 +64,7 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL || '',
     },
-    push: true, // Enable auto-push to create tables (prompts will be auto-answered)
+    push: false, // Disabled so app starts without blocking on schema push; run scripts/run-fix-locked-documents-fk.sh if you add new collections
   }),
   sharp,
   plugins: [],
