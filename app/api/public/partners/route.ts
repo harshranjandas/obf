@@ -46,7 +46,8 @@ export async function GET() {
     })
 
     type PartnerDoc = { imageStaticPath?: string | null; image?: { filename?: string; url?: string } | null }
-    const partnersWithFixedUrls = (partners.docs || []).map((partner: PartnerDoc) => ({
+    const docs = (partners.docs || []) as PartnerDoc[]
+    const partnersWithFixedUrls = docs.map((partner) => ({
       ...partner,
       image: getPartnerImage(partner),
     }))
