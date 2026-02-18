@@ -12,14 +12,20 @@ const uploadToPublicMap: Record<string, string> = {
   'obf-intro.mp3': '/audio/obf-intro.mp3',
 }
 
-// Rewrite upload URLs to public folder paths
-function rewriteImageUrl(image: any): any {
-  if (!image) return image
+// Prefer static path (file in public/); else rewrite upload to public path or keep upload URL
+function getPartnerImage(partner: {
+  imageStaticPath?: string | null
+  image?: { filename?: string; url?: string } | null
+}): { url: string } | { filename?: string; url?: string } | null {
+  if (partner.imageStaticPath && typeof partner.imageStaticPath === 'string') {
+    const path = partner.imageStaticPath.startsWith('/') ? partner.imageStaticPath : `/${partner.imageStaticPath}`
+    return { url: path }
+  }
+  const image = partner.image
+  if (!image) return null
   if (typeof image === 'object' && image.filename) {
     const publicPath = uploadToPublicMap[image.filename]
-    if (publicPath) {
-      return { ...image, url: publicPath }
-    }
+    if (publicPath) return { ...image, url: publicPath }
   }
   return image
 }
@@ -39,10 +45,10 @@ export async function GET() {
       },
     })
 
-    // Rewrite image URLs for Vercel deployment
-    const partnersWithFixedUrls = (partners.docs || []).map((partner: any) => ({
+    type PartnerDoc = { imageStaticPath?: string | null; image?: { filename?: string; url?: string } | null }
+    const partnersWithFixedUrls = (partners.docs || []).map((partner: PartnerDoc) => ({
       ...partner,
-      image: rewriteImageUrl(partner.image),
+      image: getPartnerImage(partner),
     }))
 
     return NextResponse.json(partnersWithFixedUrls)

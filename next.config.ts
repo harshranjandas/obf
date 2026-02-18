@@ -3,6 +3,7 @@ import { withPayload } from '@payloadcms/next/withPayload'
 
 const nextConfig: NextConfig = {
   /* config options here */
+  transpilePackages: ['payload'],
   images: {
     remotePatterns: [
       {
@@ -19,4 +20,7 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withPayload(nextConfig);
+export default withPayload(nextConfig, {
+  // Bundle payload in dev so client admin (Nav, etc.) can resolve payload/shared (PREFERENCE_KEYS)
+  devBundleServerPackages: true,
+});

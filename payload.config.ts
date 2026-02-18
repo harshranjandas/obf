@@ -18,6 +18,7 @@ class PoolWithSearchPath extends Pool {
 }
 const pgWithSearchPath = { ...pg, Pool: PoolWithSearchPath }
 
+import { s3Storage } from '@payloadcms/storage-s3'
 import { Advisors } from './src/collections/Advisors'
 import { Users } from './src/collections/Users'
 import { Pages } from './src/collections/Pages'
@@ -32,6 +33,42 @@ import { HomepageSettings } from './src/collections/HomepageSettings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+
+// Use S3 when env vars are set (e.g. on Vercel). Otherwise use local `uploads` folder.
+const useS3 =
+  process.env.S3_BUCKET &&
+  process.env.S3_ACCESS_KEY_ID &&
+  process.env.S3_SECRET_ACCESS_KEY &&
+  process.env.S3_REGION
+
+if (process.env.NODE_ENV !== 'test') {
+  console.log(useS3 ? `[Payload] S3 uploads enabled (bucket: ${process.env.S3_BUCKET})` : '[Payload] Using local uploads folder (no S3 env vars)')
+}
+
+const plugins = [
+  ...(useS3
+    ? [
+        s3Storage({
+          collections: {
+            uploads: {
+              prefix: 'uploads',
+            },
+          },
+          bucket: process.env.S3_BUCKET as string,
+          config: {
+            region: process.env.S3_REGION as string,
+            credentials: {
+              accessKeyId: process.env.S3_ACCESS_KEY_ID as string,
+              secretAccessKey: process.env.S3_SECRET_ACCESS_KEY as string,
+            },
+            ...(process.env.S3_ENDPOINT && { endpoint: process.env.S3_ENDPOINT }),
+          },
+          // Optional: for large files on Vercel (requires CORS PUT on bucket)
+          // clientUploads: true,
+        }),
+      ]
+    : []),
+]
 
 export default buildConfig({
   admin: {
@@ -64,8 +101,8 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL || '',
     },
-    push: false, // Disabled so app starts without blocking on schema push; run scripts/run-fix-locked-documents-fk.sh if you add new collections
+    push: true, // Set to true to create missing tables (e.g. users_sessions). If you see ADD CONSTRAINT "payload_locked_documents_rels_parent_fk" failed, run scripts/run-fix-locked-documents-fk.sh then set back to false.
   }),
   sharp,
-  plugins: [],
+  plugins,
 })

@@ -28,9 +28,20 @@ export const Partners: CollectionConfig = {
       type: 'textarea',
     },
     {
+      name: 'imageStaticPath',
+      type: 'text',
+      label: 'Image path (static)',
+      admin: {
+        description: 'Use a path like /images/partners/name.jpg when the file is in public/images/partners/ (commit the file to the repo). Overrides Upload when set.',
+      },
+    },
+    {
       name: 'image',
       type: 'upload',
       relationTo: 'uploads',
+      admin: {
+        description: 'Or upload an image (on Vercel, requires S3 env vars). Ignored if Image path (static) is set.',
+      },
     },
     {
       name: 'website',

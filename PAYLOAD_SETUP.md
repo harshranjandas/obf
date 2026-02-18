@@ -39,6 +39,25 @@ If you have `expect` installed, you can use the automated script:
 ✅ **Middleware:** Created middleware to detect Payload routes
 ✅ **Layout:** Root layout now skips HTML/body for Payload routes
 
+## File uploads (local vs Vercel)
+
+- **Local:** Uploads are stored in the `uploads/` folder (like a normal folder on your machine). No extra config.
+- **Vercel (or any serverless):** The app uses **AWS S3** for uploads (no Vercel Blob). Set these in your Vercel (or host) environment:
+
+  - `S3_BUCKET` – bucket name  
+  - `S3_REGION` – e.g. `us-east-1`  
+  - `S3_ACCESS_KEY_ID` – IAM access key  
+  - `S3_SECRET_ACCESS_KEY` – IAM secret  
+
+  Files are stored under the `uploads/` prefix in the bucket (folder-like). Optional: `S3_ENDPOINT` for S3-compatible storage (e.g. Cloudflare R2).
+
+### Partner images “stored locally” (repo folder)
+
+Images like `/images/partners/iamai.jpg` are served from the repo: they live in **`public/images/partners/`** and are deployed with the app (no runtime upload).
+
+- **To add a new partner image:** add the file to `public/images/partners/` (e.g. `public/images/partners/iamai.jpg`), commit and push. In Admin → Partners, either set **Image path (static)** to `/images/partners/iamai.jpg` (no upload needed), or use the Upload field if you have S3 configured.
+- **Existing mappings** (e.g. upload filename `iamai.webp` → `/images/partners/iamai.jpg`) remain in the API so current partners keep working.
+
 ## Current Status
 
 - ✅ Server runs successfully

@@ -1,5 +1,12 @@
 import type { CollectionConfig } from 'payload'
 
+// When S3 env vars are set, disable local storage so uploads go only to S3
+const useS3 =
+  process.env.S3_BUCKET &&
+  process.env.S3_ACCESS_KEY_ID &&
+  process.env.S3_SECRET_ACCESS_KEY &&
+  process.env.S3_REGION
+
 export const Uploads: CollectionConfig = {
   slug: 'uploads',
   admin: {
@@ -12,7 +19,7 @@ export const Uploads: CollectionConfig = {
     delete: ({ req: { user } }) => !!user,
   },
   upload: {
-    staticDir: 'uploads',
+    ...(useS3 ? { disableLocalStorage: true } : { staticDir: 'uploads' }),
     mimeTypes: [
       'image/*',
       'application/pdf',
