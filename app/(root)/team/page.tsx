@@ -50,7 +50,7 @@ function getImageUrl(image: TeamMember['image']): string | null {
   }
   if (image.url) {
     const url = image.url;
-    return url.startsWith('http') ? url : url.startsWith('/') ? url : `/${url}`;
+    return url.startsWith('http') ? new URL(url).pathname : url.startsWith('/') ? url : `/${url}`;
   }
   if (image.filename) {
     return `/api/uploads/file/${image.filename}`;
