@@ -9,7 +9,7 @@ export default function JobListingCard({ jobs }: { jobs: Job[] }) {
       {jobs.map((job) => (
         <div
           key={job.id}
-          className="relative flex min-h-[95px] w-full flex-col border border-[#EDEDED] bg-white p-6 transition-all duration-300 ease-out hover:bg-[#FFFBF0] md:flex-row md:items-center md:p-0"
+          className="relative flex min-h-[95px] w-full flex-col border border-[#EDEDED] bg-white p-6 transition-all duration-300 ease-out hover:bg-[#EF671F]/10 md:flex-row md:items-center md:p-0"
         >
           <div className="relative h-[60px] w-[60px] md:absolute md:left-0 md:top-0 md:h-[95px] md:w-[95px] md:p-0">
             <Image
